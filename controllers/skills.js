@@ -10,6 +10,7 @@ module.exports = {
     show,
     new: newSkill,
     create,
+    delete: deleteSkill,
 }
 // controllers/todos.js
 
@@ -37,9 +38,18 @@ function newSkill(req, res) {
     })
 }
 
+
 function create(req, res) {
     console.log(req.body);
     Skill.create(req.body);
     // Do a redirect anytime data is changed
+    res.redirect('/skills');
+}
+
+
+function deleteSkill(req, res) {
+    // The delete one id
+    Skill.deleteOne(req.params.id)
+    // needs a response,  a redirect after it deletes, back to Skills
     res.redirect('/skills');
 }
