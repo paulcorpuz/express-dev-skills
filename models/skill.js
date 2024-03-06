@@ -9,6 +9,7 @@ const skills = [
 module.exports = {
     getAll,
     getOne,
+    create,
 };
 
 function getAll() {
@@ -22,4 +23,12 @@ function getOne(id) {
     // ideal for finding objects within an array
     const skill = skills.find(skill => skill.id === id)
     return skill;
-  }
+}
+
+function create(skill) {
+    // Add the id
+    skill.id = Date.now() % 1000000;
+    // New todos wouldn't be done :)
+    skill.done = false;
+    skills.push(skill);
+}

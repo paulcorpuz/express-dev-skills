@@ -10,8 +10,32 @@ var skillsCtrl = require('../controllers/skills')
 // Get all skills
 router.get('/', skillsCtrl.index )
 
-// get one todo --> /skills/:id
+// GET for the form ---> /skills/new -- order matters, has to be before show
+router.get('/new', skillsCtrl.new)
+
+// get one skill --> /skills/:id
 router.get('/:skillsId', skillsCtrl.show);
+
+
+
+// GET /skills/:id
+router.get('/:id', skillsCtrl.show);
+
+
+// POST a skill --> /skills
+router.post('/', skillsCtrl.create)
+
+
+
+
+
+
+
+// POST a skill --> /skills
+
+
+
+
 
 
 
