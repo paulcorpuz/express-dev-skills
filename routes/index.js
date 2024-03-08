@@ -7,7 +7,7 @@ var router = express.Router();
 
 // everything here starts with /
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'My Skills' });
 });
 
 

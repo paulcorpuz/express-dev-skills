@@ -11,6 +11,8 @@ module.exports = {
     new: newSkill,
     create,
     delete: deleteSkill,
+    edit,
+    update,
 }
 // controllers/todos.js
 
@@ -52,4 +54,20 @@ function deleteSkill(req, res) {
     Skill.deleteOne(req.params.id)
     // needs a response,  a redirect after it deletes, back to Skills
     res.redirect('/skills');
+}
+
+// Jimbo lesson
+function edit(req, res) {
+    const skill = Skill.getOne(req.params.id) //object
+    res.render('skills/edit', {  //what ejs page to 
+        title: 'Edit Skill',
+        skill,
+    })
+}
+
+// Jimbo lesson
+function update(req, res) {
+    req.body.done = !!req.body.done;
+    Skill.update(req.params.id, req.body); //used when we made data
+    res.redirect(`/skills/${req.params.id}`);
 }

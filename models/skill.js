@@ -11,6 +11,7 @@ module.exports = {
     getOne,
     create,
     deleteOne,
+    update,
 };
 
 function getAll() {
@@ -27,9 +28,7 @@ function getOne(id) {
 }
 
 function create(skill) {
-    // Add the id
     skill.id = Date.now() % 1000000;
-    // New todos wouldn't be done :)
     skill.done = false;
     skills.push(skill);
 }
@@ -38,4 +37,10 @@ function deleteOne(id) {
     id = parseInt(id);
     const idx = skills.findIndex(skill => skill.id === id)
     skills.splice(idx, 1) //splice, what index and how many to delete
+};
+
+function update(id, updatedSkill) {
+    id = parseInt(id);
+    const skill = skills.find(skill => skill.id === id)
+    Object.assign(skill, updatedSkill) 
 };
